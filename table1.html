@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table 1: Interactive Data</title>
+    <title>Table 1: Huancavelica Interactive Data</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <style>
@@ -108,7 +108,7 @@
                         this.api().columns().every(function() {
                             var column = this;
                             var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.header()).next()) // Appends dropdown below the header
+                                .appendTo($(column.header())) // Append the dropdown to the column header itself
                                 .on('change', function() {
                                     var val = $(this).val();
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
