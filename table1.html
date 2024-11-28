@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Interactive CSV Table</title>
-    <!-- Include DataTables CSS -->
+    <title>Interactive CSV Table 1</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <!-- Include jQuery and DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    
-    <!-- Include PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    
-    <!-- Include DataTables Buttons Plugin -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </head>
 <body>
-    <h1>Interactive CSV Viewer</h1>
+    <h1>Interactive CSV Table 1</h1>
     <table id="csv-table" class="display" style="width:100%">
         <thead></thead>
         <tbody></tbody>
     </table>
 
     <script>
-        // Load CSV file using PapaParse
         Papa.parse("https://raw.githubusercontent.com/szarate88/Sorting-Andean-Potatoes/refs/heads/main/csv%20huancavelica%20-%20Sheet1.csv", {
             download: true,
             header: true,
             complete: function(results) {
                 const data = results.data;
-                const columns = Object.keys(data[0]).map(key => ({ title: key })); // Use CSV headers for table columns
-                
-                // Initialize DataTable
+                const columns = Object.keys(data[0]).map(key => ({ title: key }));
+
                 $('#csv-table').DataTable({
-                    data: data.map(row => Object.values(row)), // Use row values as table data
-                    columns: columns, // Use headers as column titles
+                    data: data.map(row => Object.values(row)),
+                    columns: columns,
                     responsive: true,
                     dom: 'Bfrtip',
-                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'], // Export options
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
                 });
             }
         });
     </script>
+    <br><br>
+    <a href="index.html" class="button">Back to Main Page</a>
 </body>
 </html>
