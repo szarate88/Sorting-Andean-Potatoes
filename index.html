@@ -7,28 +7,40 @@
     <style>
         /* Body and page styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 40px;
-            background-color: #f4f4f9;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
-        
+
+        /* Heading styles */
         h1, h2 {
             text-align: center;
             font-weight: bold;
-            color: #333;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-weight: 600;
+            color: #2d6a4f;
+            margin-top: 30px;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 1.2em;
             text-align: center;
             color: #555;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
         }
 
         .container {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
+            padding: 0 20px;
         }
 
         .button {
@@ -40,9 +52,9 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 20px 2px;
+            margin: 15px 10px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
 
@@ -52,18 +64,26 @@
 
         /* Section for description and guide */
         .description-text {
-            background-color: #f4f4f4;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 25px;
             border-radius: 8px;
             font-size: 1.1em;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         ul {
-            text-align: left;
-            margin: 0 auto;
-            max-width: 600px;
+            padding-left: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 12px;
         }
 
         footer {
@@ -71,14 +91,24 @@
             color: white;
             padding: 20px;
             text-align: center;
-            font-size: 1em;
+            font-size: 1.1em;
+            margin-top: 40px;
         }
 
-        /* Responsive design */
-        @media screen and (max-width: 600px) {
-            .container {
-                padding: 20px;
+        /* Responsive design for small screens */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
             }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
             ul {
                 font-size: 1em;
             }
@@ -105,8 +135,16 @@
         <!-- Metaphorical Naming Guide -->
         <div class="description-text">
             <h3>Metaphorical vs Non-Metaphorical Naming:</h3>
-            <p><strong>Direct references</strong> include tuber shape, color, and origin. These are the most important categories of direct naming.</p>
-            <p><strong>Indirect or metaphorical references</strong> may include body parts, animals, people, plants, objects, actions, and states of being.</p>
+            <p><strong>Direct references</strong> are names given to potatoes based on observable traits such as their color, shape, or supposed origin. For example:</p>
+            <ul>
+                <li>If a potato’s name includes <strong>puka</strong> (red) or <strong>yana</strong> (black), it is named after its color.</li>
+                <li>If a name refers to a particular shape or origin, such as a potato being named after a geographic location or its shape, this is also a direct reference.</li>
+            </ul>
+            <p><strong>Indirect or metaphorical references</strong> involve names that are inspired by things the potato "resembles" or associations that go beyond its physical traits. For example:</p>
+            <ul>
+                <li>A potato named after an animal, such as "llama" (an animal), or a plant.</li>
+                <li>Metaphorical names may also refer to objects, actions, or cultural references. For instance, a potato named "haragana" (lazy) may refer to a cultural or metaphorical trait rather than a physical characteristic.</li>
+            </ul>
         </div>
         
         <!-- Buttons to Tables -->
@@ -121,4 +159,5 @@
 
 </body>
 </html>
+
 
