@@ -10,36 +10,20 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            font-size: 16px;  /* Adjust font size for consistency */
+            margin: 0;
+            padding: 20px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #ddd;
+        h1 {
+            text-align: center;
+            font-size: 32px; /* Adjust title font size */
+            margin-bottom: 20px;
         }
 
         .container {
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .button {
@@ -50,7 +34,7 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 14px;
+            font-size: 16px;
             margin: 10px;
             cursor: pointer;
             border-radius: 5px;
@@ -60,16 +44,52 @@
             background-color: #45a049;
         }
 
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 14px;  /* Adjust table font size */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
         /* Style for the dropdown */
         select {
             padding: 5px;
-            width: 100%;
+            width: 150px;
             margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .dataTables_wrapper {
+            width: 100%;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
-    <h1>Table 1: La Libertad Interactive Data</h1>
+    <h1>Table 2: La Libertad Interactive Data</h1>
 
     <div class="container">
         <a href="index.html" class="button">Back to Index</a>
