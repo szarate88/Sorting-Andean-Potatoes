@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table 2: Interactive Data 2</title>
+    <title>Table 2: La Libertad Interactive Data</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <style>
@@ -69,7 +69,7 @@
     </style>
 </head>
 <body>
-    <h1>Table 2: Interactive Data 2</h1>
+    <h1>Table 1: Interactive Data</h1>
 
     <div class="container">
         <a href="index.html" class="button">Back to Index</a>
@@ -108,7 +108,7 @@
                         this.api().columns().every(function() {
                             var column = this;
                             var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.header()).next()) // Appends dropdown below the header
+                                .appendTo($(column.header())) // Append the dropdown to the column header itself
                                 .on('change', function() {
                                     var val = $(this).val();
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
@@ -126,3 +126,4 @@
     </script>
 </body>
 </html>
+
