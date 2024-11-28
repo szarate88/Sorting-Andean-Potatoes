@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            font-size: 16px;  /* Adjust font size for consistency */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            font-size: 16px;
             margin: 0;
             padding: 20px;
         }
 
         h1 {
             text-align: center;
-            font-size: 32px; /* Adjust title font size */
-            margin-bottom: 20px;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .container {
@@ -30,61 +32,102 @@
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
+            padding: 12px 25px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
         .button:hover {
             background-color: #45a049;
         }
 
-        /* Table styles */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
-            padding: 12px 15px;
+            padding: 16px 20px;
             text-align: left;
             border: 1px solid #ddd;
-            font-size: 14px;  /* Adjust table font size */
+            font-size: 14px;
         }
 
         th {
             background-color: #4CAF50;
             color: white;
             text-align: center;
+            font-weight: 600;
+            font-size: 16px;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f7f7f7;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #eaeaea;
         }
 
-        /* Style for the dropdown */
         select {
-            padding: 5px;
-            width: 150px;
-            margin-top: 5px;
-            border-radius: 5px;
+            padding: 8px;
+            width: 180px;
+            border-radius: 6px;
             border: 1px solid #ddd;
+            background-color: #fff;
+            font-size: 14px;
+            margin-top: 6px;
+            transition: border-color 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #4CAF50;
+        }
+
+        .long-description {
+            max-width: 400px;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.6;
+            padding: 10px;
+        }
+
+        td {
+            vertical-align: top;
+            padding: 16px 20px;
+            font-size: 14px;
         }
 
         .dataTables_wrapper {
             width: 100%;
             margin: 0 auto;
+        }
+
+        /* Add row height and adjust padding for better spacing */
+        tr {
+            height: auto;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        /* Add some responsiveness for small screens */
+        @media screen and (max-width: 768px) {
+            th, td {
+                padding: 12px;
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -113,7 +156,10 @@
             header: true,
             complete: function(results) {
                 const data = results.data;
-                const columns = Object.keys(data[0]).map(key => ({ title: key }));
+                const columns = Object.keys(data[0]).map(key => ({
+                    title: key,
+                    className: key === 'Description of the Cultivar' ? 'long-description' : ''
+                }));
 
                 $('#csv-table').DataTable({
                     data: data.map(row => Object.values(row)),
@@ -134,7 +180,6 @@
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
                                 });
 
-                            // Populate the dropdown with unique values from the column
                             column.data().unique().sort().each(function(d) {
                                 select.append('<option value="' + d + '">' + d + '</option>');
                             });
@@ -146,4 +191,3 @@
     </script>
 </body>
 </html>
-
