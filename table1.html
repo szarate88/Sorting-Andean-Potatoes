@@ -3,84 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table 1: Interactive Data</title>
+    <title>Interactive CSV Table</title>
+    <!-- Include DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+    <!-- Include jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
+        /* Add some spacing between the header and the dropdown */
         th {
-            background-color: #4CAF50;
-            color: white;
+            position: relative;
         }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #ddd;
-        }
-
-        .container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .button:hover {
-            background-color: #45a049;
+        select {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            margin-left: 10px;
+            width: 120px;
         }
     </style>
 </head>
 <body>
-    <h1>Table 1: Interactive Data</h1>
-
-    <div class="container">
-        <a href="index.html" class="button">Back to Index</a>
-    </div>
-
+    <h1>Interactive CSV Table</h1>
     <table id="csv-table" class="display" style="width:100%">
         <thead></thead>
         <tbody></tbody>
     </table>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-
     <script>
+        // Load CSV file using PapaParse
         Papa.parse("https://raw.githubusercontent.com/szarate88/Sorting-Andean-Potatoes/refs/heads/main/csv%20huancavelica%20-%20Sheet1.csv", {
             download: true,
             header: true,
@@ -88,6 +39,7 @@
                 const data = results.data;
                 const columns = Object.keys(data[0]).map(key => ({ title: key }));
 
+                // Initialize DataTable
                 $('#csv-table').DataTable({
                     data: data.map(row => Object.values(row)),
                     columns: columns,
@@ -101,12 +53,13 @@
                         this.api().columns().every(function() {
                             var column = this;
                             var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.header()).empty())
+                                .appendTo($(column.header())) // Append the dropdown next to the header text
                                 .on('change', function() {
                                     var val = $(this).val();
-                                    column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                    column.search(val ? '^' + val + '$' : '', true, false).draw(); // Filter the data based on selected option
                                 });
 
+                            // Add options to the dropdown based on unique values in the column
                             column.data().unique().sort().each(function(d) {
                                 select.append('<option value="' + d + '">' + d + '</option>');
                             });
@@ -116,5 +69,11 @@
             }
         });
     </script>
+    <!-- Include PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include DataTables Buttons Plugin -->
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </body>
 </html>
